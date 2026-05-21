@@ -43,13 +43,146 @@ Render the result to the HTML template.
 Publish the website in Localhost.
 
 ## PROGRAM:
+```
+Index.html
 
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>GST Calculator</title>
+
+    <style>
+
+        body{
+            font-family: Arial;
+            background: linear-gradient(to right, #dbeafe, #1e3a8a);
+        }
+
+        .box{
+            width: 350px;
+            background: white;
+            padding: 30px;
+            margin: auto;
+            margin-top: 100px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0px 0px 10px gray;
+        }
+
+        h1{
+            color: #1e3a8a;
+        }
+
+        input{
+            width: 90%;
+            padding: 10px;
+            margin-top: 15px;
+            border: 1px solid lightgray;
+            border-radius: 5px;
+        }
+
+        button{
+            background: #1e3a8a;
+            color: white;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        h2{
+            color: darkgreen;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h1>GST Bill Calculator</h1>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <input type="number" name="price" placeholder="Enter Price" required>
+
+            <input type="number" name="gst" placeholder="Enter GST %" required>
+
+            <button type="submit">Calculate</button>
+
+        </form>
+
+        {% if total_bill %}
+
+        <h2>Total Bill = ₹ {{ total_bill }}</h2>
+
+        {% endif %}
+
+    </div>
+
+</body>
+
+</html>
+
+
+Result.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GST Result</title>
+</head>
+
+<body bgcolor="lightblue">
+     <style>
+
+        .box{
+            width: 400px;
+            padding: 20px;
+            background: white;
+            margin: 100px auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        </style>
+<div class="box">
+<center>
+
+    <h1>GST Calculation Result</h1>
+
+    <h2>Price = ₹ {{ price }}</h2>
+
+    <h2>GST = {{ gst }} %</h2>
+
+    <h2>GST Amount = ₹ {{ gst_amount }}</h2>
+
+    <h1>Total Bill = ₹ {{ total_bill }}</h1>
+
+    <a href="/" style='color: red; text-decoration: underline;'>Go Back</a>
+
+</center>
+</box>
+
+    
+
+</body>
+</html>
+```
 
 ## OUTPUT - SERVER SIDE:
-
+![Image Name](4.png)
 
 ## OUTPUT - WEBPAGE:
-
+![Image Name](1.png)
+![Image Name](2.png)
+![Image Name](3.png)
 
 ## RESULT:
 The a web page to calculate total bill amount with GST from price and GST percentage using server-side scripts is created successfully.
