@@ -177,12 +177,12 @@ Result.html
 ```
 
 ## OUTPUT - SERVER SIDE:
-![Image Name](4.png)
+![Image Name](/MathServer/Math/Mathapp/templates/4.png)
 
 ## OUTPUT - WEBPAGE:
-![Image Name](1.png)
-![Image Name](2.png)
-![Image Name](3.png)
+![Image Name](/MathServer/Math/Mathapp/templates/1.png)
+![Image Name](/MathServer/Math/Mathapp/templates/2.png)
+![Image Name](/MathServer/Math/Mathapp/templates/3.png)
 
 ## RESULT:
 The a web page to calculate total bill amount with GST from price and GST percentage using server-side scripts is created successfully.
