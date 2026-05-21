@@ -174,6 +174,56 @@ Result.html
 
 </body>
 </html>
+
+models.py 
+from django.db import models
+from django.contrib import admin
+
+class GSTBill(models.Model):
+    bill_id = models.IntegerField(primary_key=True)
+    price = models.FloatField()
+    gst = models.FloatField()
+    gst_amount = models.FloatField()
+    total_bill = models.FloatField()
+    
+class GSTBillAdmin(admin.ModelAdmin):
+    list_display = ('bill_id', 'price', 'gst', 'gst_amount', 'total_bill')
+
+    apps.py
+    price = float(input("Enter Price: "))
+gst = float(input("Enter GST %: "))
+
+gst_amount = (price * gst) / 100
+total_bill = price + gst_amount
+
+# SERVER SIDE OUTPUT
+print("\nGST Calculation Result")
+print("Price = ₹", price)
+print("GST = ", gst, "%")
+print("GST Amount = ₹", gst_amount)
+print("Total Bill = ₹", total_bill)
+
+views.py
+from django.shortcuts import render
+
+def gst(request):
+    if request.method == 'POST':
+        price = float(request.POST.get('price', 0))
+        gst = float(request.POST.get('gst', 0))
+        
+        gst_amount = price * (gst / 100)
+        total_bill = price + gst_amount
+        
+        context = {
+            'price': price,
+            'gst': gst,
+            'gst_amount': gst_amount,
+            'total_bill': total_bill
+        }
+        
+        return render(request, 'result.html', context)
+    
+    return render(request, 'index.html')
 ```
 
 ## OUTPUT - SERVER SIDE:
